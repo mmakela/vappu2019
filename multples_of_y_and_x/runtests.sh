@@ -1,0 +1,1 @@
+robot -P tests --outputdir results tests/tests.robot
