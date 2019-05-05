@@ -1,4 +1,5 @@
 import itertools
+import os
 import sys
 
 
@@ -59,10 +60,21 @@ def main(infile, outfile):
     _write_lines(outfile, output)
 
 
-if __name__ == '__main__':
+def _print_usage():
+    print 'usage: {0[0]} INPUT OUTPUT'.format(sys.argv)
+    sys.exit(1)
+
+
+def cli():
     try:
         infile, outfile = sys.argv[1:]
     except ValueError:
-        print 'usage: {0[0]} INPUT OUTPUT'.format(sys.argv)
-        sys.exit(1)
+        _print_usage()
+    if not os.path.isfile(infile):
+        print 'INPUT file missing'
+        _print_usage()
     main(infile, outfile)
+
+
+if __name__ == '__main__':
+    cli()
