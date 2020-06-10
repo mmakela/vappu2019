@@ -8,9 +8,10 @@ pipeline {
   stages {
     stage('test') {
       steps {
-        sh 'multiples robot'
+        dir('multples_of_y_and_x') {
+          sh 'multiples robot'
+        }
       }
     }
-
   }
 }
